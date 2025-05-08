@@ -22,9 +22,9 @@ app.get('/', (req, res) => {
         <title>Stripe Server</title>
         <link rel="icon" type="image/x-icon" href="/node.svg">
     </head>
-    <body>
+    <body style="min-width: 100vh; background-color: #282828;">
         <div style="text-align: center; padding: 180px 0 300px 0; font-family: sans-serif;">
-            <h1>Stripe Donation Server is running successfully!</h1>
+            <h1 style="color: white">Stripe <span style="color: #8cc84b">Donation Server is running</span> successfully!</h1>
             <img src="/node.svg" alt="Node.js" width="200" style="margin-top: 20px;" />
     </div>
     </body>
