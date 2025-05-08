@@ -1,4 +1,3 @@
-// server/server.js
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -11,6 +10,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 app.use(cors({ origin: process.env.CLIENT_URL }));
 app.use(express.json());
+
+// ➤ Корневой маршрут — покажет сообщение при заходе на домен сервера
+app.get('/', (req, res) => {
+    res.send('<h2>✅ Stripe Donation Server is running successfully!</h2>');
+});
 
 app.post('/create-checkout-session', async (req, res) => {
     try {
@@ -39,4 +43,4 @@ app.post('/create-checkout-session', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
