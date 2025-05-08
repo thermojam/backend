@@ -8,17 +8,35 @@ dotenv.config();
 const app = express();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-app.use(cors({ origin: process.env.CLIENT_URL }));
+app.use(cors({origin: process.env.CLIENT_URL}));
 app.use(express.json());
 
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.send(`
-    <div style="background-color: #282828; text-align: center; padding: 50px; font-family: sans-serif;">
-      <h2 style="color: #026010">Stripe Donation Server is running successfully!</h2>
-      <img src="/node.svg" alt="serve" width="100" style="margin-top: 20px;" />
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Stripe Server</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.png">
+        <style>
+            body {
+               padding: 250px 0 350px 0;
+                font-family: sans-serif;
+                background-color: #282828;
+                color: #8cc84b;
+          }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h2 style="color: #8cc84b">Stripe Donation Server is running successfully!</h2>
+            <img src="/node.svg" alt="serve" width="100" style="margin-top: 20px;" />
     </div>
+    </body>
+    </html>
   `);
 });
 
@@ -42,10 +60,10 @@ app.post('/create-checkout-session', async (req, res) => {
             cancel_url: `${process.env.CLIENT_URL}/cancel`,
         });
 
-        res.status(200).json({ url: session.url });
+        res.status(200).json({url: session.url});
     } catch (err) {
         console.error('Error creating Stripe session', err);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({error: 'Internal Server Error'});
     }
 });
 
