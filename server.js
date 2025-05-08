@@ -15,8 +15,8 @@ app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.send(`
-    <div style="text-align: center; padding: 50px; font-family: sans-serif;">
-      <h2>Stripe Donation Server is running successfully!</h2>
+    <div style="background-color: #282828; text-align: center; padding: 50px; font-family: sans-serif;">
+      <h2 style="color: #026010">Stripe Donation Server is running successfully!</h2>
       <img src="/node.svg" alt="serve" width="100" style="margin-top: 20px;" />
     </div>
   `);
